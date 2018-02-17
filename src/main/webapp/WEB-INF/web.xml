@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+  <display-name>Archetype Created Web Application</display-name>
+
+	<servlet>
+		<servlet-name>AddConsoles</servlet-name>
+		<servlet-class>es.salesianos.servlet.AddConsoles</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AddVideoGames</servlet-name>
+		<servlet-class>es.salesianos.servlet.AddVideoGames</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ListConsoles</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListConsoles</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ListVideoGame</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListVideoGame</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DeleteConsole</servlet-name>
+		<servlet-class>es.salesianos.servlet.DeleteConsole</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DeleteVideoGame</servlet-name>
+		<servlet-class>es.salesianos.servlet.DeleteVideoGame</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ListOrderTitle</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListOrderTitle</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ListOrderVideoGames</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListOrderVideoGames</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>AddConsoles</servlet-name>
+		<url-pattern>addConsole</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddVideoGames</servlet-name>
+		<url-pattern>addVideogame</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListConsoles</servlet-name>
+		<url-pattern>listConsole</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListVideoGame</servlet-name>
+		<url-pattern>listVideoGame</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteConsole</servlet-name>
+		<url-pattern>delete</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteVideoGame</servlet-name>
+		<url-pattern>deleteVG</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListOrderTitle</servlet-name>
+		<url-pattern>OrderByTitle</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListOrderVideoGames</servlet-name>
+		<url-pattern>OrderByReleaseDate</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>addConsole.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
