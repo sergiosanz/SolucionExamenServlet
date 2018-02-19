@@ -15,7 +15,7 @@ public class ConsoleRepository {
 	ConnectionManager manager = new H2Connection();
 
 	public Console search(Console ConsoleForm) {
-		Console ConsoleInDatabase= null;
+		Console consoleInDatabase= null;
 		ResultSet resultSet = null;
 		PreparedStatement prepareStatement = null;
 		Connection conn = manager.open(jdbcUrl);
@@ -24,34 +24,34 @@ public class ConsoleRepository {
 			prepareStatement.setString(1, ConsoleForm.getName());
 			resultSet = prepareStatement.executeQuery();
 			while(resultSet.next()){
-				ConsoleInDatabase = new Console();
-				ConsoleInDatabase.setName(resultSet.getString(0));
-				ConsoleInDatabase.setCompany(resultSet.getString(1));
+				consoleInDatabase = new Console();
+				consoleInDatabase.setName(resultSet.getString(1));
+				consoleInDatabase.setCompanyId(resultSet.getInt(2));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}finally {
-			close(resultSet);
-			close(prepareStatement);
+			manager.close(resultSet);
+			manager.close(prepareStatement);
 			
 		}
 		manager.close(conn);
-		return ConsoleInDatabase;
+		return consoleInDatabase;
 	}
 	public void insertConsole(Console consoleForm) {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn.prepareStatement("INSERT INTO CONSOLE (name, company)" + "VALUES (?, ?)");
+			preparedStatement = conn.prepareStatement("INSERT INTO CONSOLE (name, companyId)" + "VALUES (?, ?)");
 			preparedStatement.setString(1, consoleForm.getName());
-			preparedStatement.setString(2, consoleForm.getCompany());
+			preparedStatement.setInt(2, consoleForm.getCompanyId());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		} finally {
-			close(preparedStatement);
+			manager.close(preparedStatement);
 		}
 		manager.close(conn);
 	}
@@ -70,76 +70,56 @@ public class ConsoleRepository {
 			while(resultSet.next()){
 				Console consoleInDatabase = new Console();
 				consoleInDatabase.setName(resultSet.getString(1));
-				consoleInDatabase.setCompany(resultSet.getString(2));
+				consoleInDatabase.setCompanyId(resultSet.getInt(2));
 				listConsoles.add(consoleInDatabase);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}finally {
-			close(resultSet);
-			close(prepareStatement);
+			manager.close(resultSet);
+			manager.close(prepareStatement);
 		}
 		manager.close(conn);
 		return listConsoles;
 	}
-	public List<Console> orderByTitle() {
+	public List<Console> selectByCompany(int id) {
 		List<Console> listConsoles= new ArrayList<Console>();
 		Connection conn = manager.open(jdbcUrl);
 		ResultSet resultSet = null;
 		PreparedStatement prepareStatement = null;
 		try {
-			prepareStatement = conn.prepareStatement("SELECT * FROM CONSOLE ORDER BY name ASC");
+			prepareStatement = conn.prepareStatement("SELECT * FROM CONSOLE WHERE companyId = ?");
+			prepareStatement.setString(1, id + "");
 			resultSet = prepareStatement.executeQuery();
 			while(resultSet.next()){
 				Console consoleInDatabase = new Console();
 				consoleInDatabase.setName(resultSet.getString(1));
-				consoleInDatabase.setCompany(resultSet.getString(2));
+				consoleInDatabase.setCompanyId(resultSet.getInt(2));
 				listConsoles.add(consoleInDatabase);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}finally {
-			close(resultSet);
-			close(prepareStatement);
+			manager.close(resultSet);
+			manager.close(prepareStatement);
 		}
 		manager.close(conn);
 		return listConsoles;
 	}
-	
 	public void delete(Console console) {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn.prepareStatement("DELETE FROM CONSOLE WHERE name ='" + console.getName() + "'" );
+			preparedStatement = conn.prepareStatement("DELETE FROM CONSOLE WHERE name = ?" );
 			preparedStatement.setString(1, console.getName());
 			preparedStatement.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(preparedStatement);
+			manager.close(preparedStatement);
 			manager.close(conn);
-		}
-	}
-
-	
-	
-	private void close(PreparedStatement prepareStatement) {
-		try {
-			prepareStatement.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-	}
-	
-	private void close(ResultSet resultSet) {
-		try {
-			resultSet.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
 		}
 	}
 }

@@ -8,11 +8,11 @@
 <title>Formulario de datos</title>
 </head>
 <body>
-<form action="addConsole" method="post">
+<form action="addCompany" method="post">
 		<span>Name:</span> 
 		<input type="text" name="name"> <br/>
-		<span>Company:</span> 
-		<input type="text" name="companyId"><br/>
+		<span>CreationDate:</span> 
+		<input type="date" name="creationDate"><br/>
 		<input type="submit">
 	</form>
 	</body>

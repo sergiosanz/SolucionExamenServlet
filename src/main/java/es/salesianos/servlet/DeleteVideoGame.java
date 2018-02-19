@@ -16,7 +16,8 @@ public class DeleteVideoGame extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		VideoGame videogame = service.assembleUserFromRequest(req);
+		VideoGame videogame = new VideoGame();
+		videogame.setName(req.getParameter("name"));
 		service.deleteVideoGame(videogame);
 		loginRedirect(req, resp);
 	}

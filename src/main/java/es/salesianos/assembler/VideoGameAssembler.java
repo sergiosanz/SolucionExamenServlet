@@ -10,6 +10,7 @@ public class VideoGameAssembler {
 		videogame.setName(request.getParameter("name"));
 		videogame.setAge(request.getParameter("age"));
 		videogame.setReleaseDate(Date.valueOf(request.getParameter("releaseDate")));
+		videogame.setCompanyId(Integer.parseInt(request.getParameter("companyId")));
 		return videogame;
 	}
 }

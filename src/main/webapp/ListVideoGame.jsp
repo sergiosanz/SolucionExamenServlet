@@ -33,6 +33,7 @@
 				<td><c:out value="${videogame.name}"/> </td>
 				<td><c:out value="${videogame.age}"/> </td>
 				<td><c:out value="${videogame.releaseDate}"/> </td>
+				<td><c:out value="${console.companyId}"/> </td>
 				<td><a href="/deleteVG?name=${videogame.name}">Delete</a></td>
 				
 	    	</tr>

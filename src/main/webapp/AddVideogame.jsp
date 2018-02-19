@@ -15,6 +15,8 @@
 		<input type="text" name="age"><br/>
 		<span>ReleaseDate:</span> 
 		<input type="date" name="releaseDate"><br/>
+		<span>Company:</span> 
+		<input type="text" name="companyId"><br/>
 		<input type="submit">
 	</form>
 	</body>

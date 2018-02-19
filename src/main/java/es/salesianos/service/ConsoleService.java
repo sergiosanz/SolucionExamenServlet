@@ -17,17 +17,17 @@ public class ConsoleService {
 	}
 	public void createNewConsoleFromRequest(Console consoleForm) {
 		Console consoleInDatabase = repository.search(consoleForm);
-		if (consoleInDatabase== null) {
+		if (consoleInDatabase == null) {
 			repository.insertConsole(consoleForm);
 		} else {
 			repository.update(consoleForm);
 		}
 	}
+	public List<Console> listAllByCompany(int idCompany){
+		return repository.selectByCompany(idCompany);
+	}
 	public List<Console> listAllConsoles() {
 		return repository.searchAll();
-	}
-	public List<Console> listOrderByTitle() {
-		return repository.orderByTitle();
 	}
 	public void deleteConsole(Console console){
 		repository.delete(console);

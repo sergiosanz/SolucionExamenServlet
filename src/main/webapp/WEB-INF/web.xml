@@ -14,6 +14,10 @@
 		<servlet-class>es.salesianos.servlet.AddVideoGames</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>AddCompanys</servlet-name>
+		<servlet-class>es.salesianos.servlet.AddCompanys</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>ListConsoles</servlet-name>
 		<servlet-class>es.salesianos.servlet.ListConsoles</servlet-class>
 	</servlet>
@@ -30,12 +34,28 @@
 		<servlet-class>es.salesianos.servlet.DeleteVideoGame</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>ListCompaniesConsole</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListCompaniesConsole</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ListCompaniesVideogames</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListCompaniesVideogames</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ListConsolesByCompany</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListConsolesByCompany</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ListVideoGamesByCompany</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListVideoGamesByCompany</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>ListOrderTitle</servlet-name>
 		<servlet-class>es.salesianos.servlet.ListOrderTitle</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>ListOrderVideoGames</servlet-name>
-		<servlet-class>es.salesianos.servlet.ListOrderVideoGames</servlet-class>
+		<servlet-name>ListOrderByReleaseDate</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListOrderByReleaseDate</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
@@ -45,6 +65,10 @@
 	<servlet-mapping>
 		<servlet-name>AddVideoGames</servlet-name>
 		<url-pattern>addVideogame</url-pattern>
+	</servlet-mapping>
+		<servlet-mapping>
+		<servlet-name>AddCompanys</servlet-name>
+		<url-pattern>addCompany</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ListConsoles</servlet-name>
@@ -63,11 +87,27 @@
 		<url-pattern>deleteVG</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+		<servlet-name>ListCompaniesConsole</servlet-name>
+		<url-pattern>listCompanies</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListCompaniesVideogames</servlet-name>
+		<url-pattern>listCompaniesVG</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListConsolesByCompany</servlet-name>
+		<url-pattern>listByConsole</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListVideoGamesByCompany</servlet-name>
+		<url-pattern>listByVideoGame</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>ListOrderTitle</servlet-name>
 		<url-pattern>OrderByTitle</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>ListOrderVideoGames</servlet-name>
+		<servlet-name>ListOrderByReleaseDate</servlet-name>
 		<url-pattern>OrderByReleaseDate</url-pattern>
 	</servlet-mapping>
 	

@@ -3,6 +3,7 @@ package es.salesianos.connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import es.salesianos.connection.ConnectionManager;
 
@@ -19,7 +20,6 @@ public class H2Connection implements ConnectionManager{
 		}
 		return conn;
 	}
-
 	public Connection executeSql(Connection conn, String sql) {
 		PreparedStatement prepareStatement;
 		try {
@@ -38,7 +38,23 @@ public class H2Connection implements ConnectionManager{
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
-
+	}
+	public void close(PreparedStatement prepareStatement) {
+		try {
+			prepareStatement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public void close(ResultSet resultSet) {
+		try {
+			resultSet.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 	
 }

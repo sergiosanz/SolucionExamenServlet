@@ -15,7 +15,7 @@
     ¿Are you sure of delete this element?
     
 	<form action="deleteVG" method="post">
-		<input type="text" value="${name}">
+		<input type="text" name="name" value="${name}">
 		<input type="submit" value="Si">
 	</form>
 

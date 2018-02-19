@@ -25,6 +25,9 @@ public class VideoGameService {
 			repository.update(VideoGameForm);
 		}
 	}
+	public List<VideoGame> listAllByCompany(int idCompany){
+		return repository.selectByCompany(idCompany);
+	}
 	public List<VideoGame> listAllVideogames() {
 		return repository.searchAll();
 	}
