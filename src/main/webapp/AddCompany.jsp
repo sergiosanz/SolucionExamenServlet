@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Form of dates</title>
+<title>Form of companies</title>
 </head>
 <body>
 <form action="addCompany" method="post">
 		<span>Name:</span> 
 		<input type="text" name="name"> <br/>
-		<span>CreationDate:</span> 
+		<span>Creation Date:</span> 
 		<input type="date" name="creationDate"><br/>
 		<input type="submit">
 	</form>

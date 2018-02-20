@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Form of dates</title>
+<title>Form of videogames</title>
 </head>
 <body>
 <form action="addVideogame" method="post">
@@ -13,7 +13,7 @@
 		<input type="text" name="name"> <br/>
 		<span>Recomended Age:</span> 
 		<input type="text" name="age"><br/>
-		<span>ReleaseDate:</span> 
+		<span>Release Date:</span> 
 		<input type="date" name="releaseDate"><br/>
 		<span>Company:</span> 
 		<input type="text" name="companyId"><br/>

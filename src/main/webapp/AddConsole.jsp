@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Form of dates</title>
+<title>Form of consoles</title>
 </head>
 <body>
 <form action="addConsole" method="post">

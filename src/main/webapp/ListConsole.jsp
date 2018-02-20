@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Show list here</title>
+<title>Show list of consoles</title>
 </head>
 <body>
 <form action="listConsole" method="post">
