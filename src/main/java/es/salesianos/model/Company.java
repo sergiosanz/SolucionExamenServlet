@@ -1,29 +1,33 @@
 package es.salesianos.model;
 
-import java.util.Date;
-
+import java.sql.Date;
 
 public class Company {
-
+	private int id;
 	private String name;
-	private Date creationdate;
-	
-	public Company(String string) {
-		this.name = string;
-	}
-	public Company() {}
-	
+	private Date creationDate;
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getCreationdate() {
-		return creationdate;
+
+	public Date getCreationDate() {
+		return creationDate;
 	}
-	public void setCreationdate(Date creationdate) {
-		this.creationdate = creationdate;
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public int getID() {
+		return id;
+	}
+
+	public void setID(int id) {
+		this.id = id;
 	}
 }
-	

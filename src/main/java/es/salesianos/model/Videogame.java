@@ -1,29 +1,43 @@
 package es.salesianos.model;
 
-import java.util.Date;
+import java.sql.Date;
 
-public class Videogame {
+public class VideoGame {
+	private String name;
+	private String age;
+	private Date releaseDate;
+	private int companyId;
 
-	private String title;	
-	private int age;
-	private Date RelDate;
-	
-	public String getTitle() {
-		return title;
+	public String getName() {
+		return name;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	public int getAge() {
+
+	public String getAge() {
 		return age;
 	}
-	public void setAge(int age) {
+
+	public void setAge(String age) {
 		this.age = age;
 	}
-	public Date getRelDate() {
-		return RelDate;
+
+	public Date getReleaseDate() {
+		return releaseDate;
 	}
-	public void setRelDate(Date relDate) {
-		RelDate = relDate;
-	}	
+
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
+	public int getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
+	}
+
 }

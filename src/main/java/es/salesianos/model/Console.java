@@ -1,22 +1,24 @@
 package es.salesianos.model;
 
-import es.salesianos.model.Company;
-
 public class Console {
 
 	private String name;
-	private Company company;
+	private int companyId;
+
+	public int getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
+	}
 
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Company getCompany() {
-		return company;
-	}
-	public void setCompany(Company company) {
-		this.company = company;
-	}
+
 }
