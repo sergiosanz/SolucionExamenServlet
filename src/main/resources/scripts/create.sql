@@ -9,7 +9,7 @@ create table IF NOT EXISTS VIDEOGAME(
 	companyId int
 );
 create table IF NOT EXISTS COMPANY(
-	ID int NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+	id int NOT NULL AUTO_INCREMENT PRIMARY KEY, 
 	name varchar(25) ,
 	creationDate date
 );

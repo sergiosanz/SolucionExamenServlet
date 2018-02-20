@@ -6,20 +6,20 @@
   <display-name>Archetype Created Web Application</display-name>
 
 	<servlet>
-		<servlet-name>AddConsoles</servlet-name>
-		<servlet-class>es.salesianos.servlet.AddConsoles</servlet-class>
+		<servlet-name>AddConsole</servlet-name>
+		<servlet-class>es.salesianos.servlet.AddConsole</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>AddVideoGames</servlet-name>
-		<servlet-class>es.salesianos.servlet.AddVideoGames</servlet-class>
+		<servlet-name>AddVideoGame</servlet-name>
+		<servlet-class>es.salesianos.servlet.AddVideoGame</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>AddCompanys</servlet-name>
-		<servlet-class>es.salesianos.servlet.AddCompanys</servlet-class>
+		<servlet-name>AddCompany</servlet-name>
+		<servlet-class>es.salesianos.servlet.AddCompany</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>ListConsoles</servlet-name>
-		<servlet-class>es.salesianos.servlet.ListConsoles</servlet-class>
+		<servlet-name>ListConsole</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListConsole</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>ListVideoGame</servlet-name>
@@ -34,20 +34,20 @@
 		<servlet-class>es.salesianos.servlet.DeleteVideoGame</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>ListCompaniesConsole</servlet-name>
-		<servlet-class>es.salesianos.servlet.ListCompaniesConsole</servlet-class>
+		<servlet-name>ListCompanyConsole</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListCompanyConsole</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>ListCompaniesVideogames</servlet-name>
-		<servlet-class>es.salesianos.servlet.ListCompaniesVideogames</servlet-class>
+		<servlet-name>ListCompanyVideogame</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListCompanyVideogame</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>ListConsolesByCompany</servlet-name>
-		<servlet-class>es.salesianos.servlet.ListConsolesByCompany</servlet-class>
+		<servlet-name>ListConsoleByCompany</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListConsoleByCompany</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>ListVideoGamesByCompany</servlet-name>
-		<servlet-class>es.salesianos.servlet.ListVideoGamesByCompany</servlet-class>
+		<servlet-name>ListVideoGameByCompany</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListVideoGameByCompany</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>ListOrderTitle</servlet-name>
@@ -59,19 +59,19 @@
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>AddConsoles</servlet-name>
+		<servlet-name>AddConsole</servlet-name>
 		<url-pattern>addConsole</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>AddVideoGames</servlet-name>
+		<servlet-name>AddVideoGame</servlet-name>
 		<url-pattern>addVideogame</url-pattern>
 	</servlet-mapping>
 		<servlet-mapping>
-		<servlet-name>AddCompanys</servlet-name>
+		<servlet-name>AddCompany</servlet-name>
 		<url-pattern>addCompany</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>ListConsoles</servlet-name>
+		<servlet-name>ListConsole</servlet-name>
 		<url-pattern>listConsole</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
@@ -87,19 +87,19 @@
 		<url-pattern>deleteVG</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>ListCompaniesConsole</servlet-name>
-		<url-pattern>listCompanies</url-pattern>
+		<servlet-name>ListCompanyConsole</servlet-name>
+		<url-pattern>listCompany</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>ListCompaniesVideogames</servlet-name>
-		<url-pattern>listCompaniesVG</url-pattern>
+		<servlet-name>ListCompanyVideogame</servlet-name>
+		<url-pattern>listCompanyVG</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>ListConsolesByCompany</servlet-name>
+		<servlet-name>ListConsoleByCompany</servlet-name>
 		<url-pattern>listByConsole</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>ListVideoGamesByCompany</servlet-name>
+		<servlet-name>ListVideoGameByCompany</servlet-name>
 		<url-pattern>listByVideoGame</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>

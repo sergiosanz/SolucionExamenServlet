@@ -11,7 +11,7 @@
 </head>
 <body>
 <form action="listConsole" method="post">
-	<input type="submit" value="ver listado">
+	<input type="submit" value="show list">
 </form>
 <table border="1">
 	<thead>
@@ -21,7 +21,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach var="console" items="${listAllConsoles}">
+		<c:forEach var="console" items="${listAllConsole}">
 			<tr>
 				<td><c:out value="${console.name}"/> </td>
 				<td><c:out value="${console.companyId}"/> </td>

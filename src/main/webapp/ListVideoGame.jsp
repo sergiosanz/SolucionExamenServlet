@@ -11,13 +11,13 @@
 </head>
 <body>
 <form action="listVideoGame" method="post">
-	<input type="submit" value="ver listado">
+	<input type="submit" value="show list">
 </form>
 <form action="OrderByTitle" method="post">
-	<input type="submit" value="ordenar listado por titulos" >
+	<input type="submit" value="order list by title" >
 </form>
 <form action="OrderByReleaseDate" method="post">
-	<input type="submit" value="ordenar listado por fecha de lanzamiento" >
+	<input type="submit" value="order list by release date" >
 </form>
 <table border="1">
 	<thead>
@@ -28,12 +28,12 @@
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach var="videogame" items="${listAllVideoGames}">
+		<c:forEach var="videogame" items="${listAllVideoGame}">
 			<tr>
 				<td><c:out value="${videogame.name}"/> </td>
 				<td><c:out value="${videogame.age}"/> </td>
 				<td><c:out value="${videogame.releaseDate}"/> </td>
-				<td><c:out value="${console.companyId}"/> </td>
+				<td><c:out value="${videogame.companyId}"/> </td>
 				<td><a href="/deleteVG?name=${videogame.name}">Delete</a></td>
 				
 	    	</tr>

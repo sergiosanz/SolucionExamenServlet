@@ -10,10 +10,10 @@
 <title>Show list here</title>
 </head>
 <body>
-<form action="listCompanies" method="post">
+<form action="listCompany" method="post">
   <select name="selectCompany" > 
-         <c:forEach var="list" items="${listAllCompanies}">
-	  		<option value="${list.ID}">${list.name}</option>
+         <c:forEach var="list" items="${listAllCompany}">
+	  		<option value="${list.id}">${list.name}</option>
          </c:forEach>
  </select>
 <input type="submit" value="Show Companies"/>
@@ -27,9 +27,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="listAllConsoles" items="${listAllConsolesByCompany}">
+			<c:forEach var="listAllConsole" items="${listAllConsoleByCompany}">
 				<tr>
-					<td><c:out value="${listAllConsoles.name}"/> </td>
+					<td><c:out value="${listAllConsole.name}"/> </td>
 		    	</tr>
 			</c:forEach>
 		</tbody>

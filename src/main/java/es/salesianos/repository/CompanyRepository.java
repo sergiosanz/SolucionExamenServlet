@@ -15,31 +15,6 @@ public class CompanyRepository {
 	private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test;INIT=RUNSCRIPT FROM 'classpath:scripts/create.sql'";
 	ConnectionManager manager = new H2Connection();
 
-	public Company search(Company companyForm) {
-		Company CompanyInDatabase= null;
-		ResultSet resultSet = null;
-		PreparedStatement prepareStatement = null;
-		Connection conn = manager.open(jdbcUrl);
-		try {
-			prepareStatement = conn.prepareStatement("SELECT * FROM Company WHERE name = ?");
-			prepareStatement.setString(1, companyForm.getName());
-			resultSet = prepareStatement.executeQuery();
-			while(resultSet.next()){
-				CompanyInDatabase = new Company();
-				CompanyInDatabase.setName(resultSet.getString(1));
-				CompanyInDatabase.setCreationDate((resultSet.getDate(2)));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}finally {
-			manager.close(resultSet);
-			manager.close(prepareStatement);
-			
-		}
-		manager.close(conn);
-		return CompanyInDatabase;
-	}
 	public void insertCompany(Company companyForm) {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
@@ -53,12 +28,8 @@ public class CompanyRepository {
 			throw new RuntimeException(e);
 		} finally {
 			manager.close(preparedStatement);
+			manager.close(conn);
 		}
-		manager.close(conn);
-	}
-	public void update(Company companyForm) {
-		Connection conn = manager.open(jdbcUrl);
-		manager.close(conn);
 	}
 	public List<Company> searchAll() {
 		List<Company> listCompanies= new ArrayList<Company>();
@@ -81,8 +52,8 @@ public class CompanyRepository {
 		}finally {
 			manager.close(resultSet);
 			manager.close(prepareStatement);
+			manager.close(conn);
 		}
-		manager.close(conn);
 		return listCompanies;
 	}
 }

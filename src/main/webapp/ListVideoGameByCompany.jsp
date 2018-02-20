@@ -10,13 +10,13 @@
 <title>Show list here</title>
 </head>
 <body>
-<form action="listCompaniesVG" method="post">
+<form action="listCompanyVG" method="post">
   <select name="selectCompany" > 
-         <c:forEach var="list" items="${listAllCompaniesVG}">
-	  		<option value="${list.ID}">${list.name}</option>
+         <c:forEach var="list" items="${listAllCompanyVG}">
+	  		<option value="${list.id}">${list.name}</option>
          </c:forEach>
  </select>
-<input type="submit" value="Show Companies"/></br>
+<input type="submit" value="Show Companies"/>
 </form>
 <form action="listByVideoGame" method="post">
 <input type="submit" value="show list"/>
@@ -29,7 +29,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="videogame" items="${listAllVideoGamesByCompany}">
+			<c:forEach var="videogame" items="${listAllVideoGameByCompany}">
 				<tr>
 					<td><c:out value="${videogame.name}"/></td>
 					<td><c:out value="${videogame.age}"/> </td>

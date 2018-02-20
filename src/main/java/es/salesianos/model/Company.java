@@ -3,7 +3,7 @@ package es.salesianos.model;
 import java.sql.Date;
 
 public class Company {
-	private int ID;
+	private int id;
 	private String name;
 	private Date creationDate;
 	
@@ -20,9 +20,9 @@ public class Company {
 		this.creationDate = creationDate;
 	}
 	public int getID() {
-		return ID;
+		return id;
 	}
-	public void setID(int iD) {
-		ID = iD;
+	public void setID(int id) {
+		this.id = id;
 	}
 }

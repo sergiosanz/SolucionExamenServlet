@@ -14,32 +14,6 @@ public class VideoGameRepository {
 	private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test";
 	ConnectionManager manager = new H2Connection();
 	
-	public VideoGame search(VideoGame videoGameForm) {
-		VideoGame videoGameInDatabase= null;
-		ResultSet resultSet = null;
-		PreparedStatement prepareStatement = null;
-		Connection conn = manager.open(jdbcUrl);
-		try {
-			prepareStatement = conn.prepareStatement("SELECT * FROM VIDEOGAME WHERE name = ?");
-			prepareStatement.setString(1, videoGameForm.getName());
-			resultSet = prepareStatement.executeQuery();
-			while(resultSet.next()){
-				videoGameInDatabase = new VideoGame();
-				videoGameInDatabase.setName(resultSet.getString(1));
-				videoGameInDatabase.setAge(resultSet.getString(2));
-				videoGameInDatabase.setReleaseDate(resultSet.getDate(3));
-				videoGameInDatabase.setCompanyId(resultSet.getInt(4));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}finally {
-			manager.close(resultSet);
-			manager.close(prepareStatement);
-		}
-		manager.close(conn);
-		return videoGameInDatabase;
-	}
 	public void insertVideoGame(VideoGame videoGameForm) {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
@@ -55,12 +29,8 @@ public class VideoGameRepository {
 			throw new RuntimeException(e);
 		} finally {
 			manager.close(preparedStatement);
+			manager.close(conn);
 		}
-		manager.close(conn);
-	}
-	public void update(VideoGame consoleForm) {
-		Connection conn = manager.open(jdbcUrl);
-		manager.close(conn);
 	}
 	public List<VideoGame> searchAll() {
 		List<VideoGame> listVideoGames= new ArrayList<VideoGame>();
@@ -84,12 +54,12 @@ public class VideoGameRepository {
 		}finally {
 			manager.close(resultSet);
 			manager.close(prepareStatement);
+			manager.close(conn);
 		}
-		manager.close(conn);
 		return listVideoGames;
 	}
 	public List<VideoGame> selectByCompany(int id) {
-		List<VideoGame> listVideoGames= new ArrayList<VideoGame>();
+		List<VideoGame> listVideoGame= new ArrayList<VideoGame>();
 		Connection conn = manager.open(jdbcUrl);
 		ResultSet resultSet = null;
 		PreparedStatement prepareStatement = null;
@@ -103,7 +73,7 @@ public class VideoGameRepository {
 				videoGameInDatabase.setAge(resultSet.getString(2));
 				videoGameInDatabase.setReleaseDate(resultSet.getDate(3));
 				videoGameInDatabase.setCompanyId(resultSet.getInt(4));
-				listVideoGames.add(videoGameInDatabase);
+				listVideoGame.add(videoGameInDatabase);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -111,9 +81,9 @@ public class VideoGameRepository {
 		}finally {
 			manager.close(resultSet);
 			manager.close(prepareStatement);
+			manager.close(conn);
 		}
-		manager.close(conn);
-		return listVideoGames;
+		return listVideoGame;
 	}
 	public List<VideoGame> orderByTitle() {
 		List<VideoGame> listVideoGames= new ArrayList<VideoGame>();
@@ -137,8 +107,8 @@ public class VideoGameRepository {
 		}finally {
 			manager.close(resultSet);
 			manager.close(prepareStatement);
+			manager.close(conn);
 		}
-		manager.close(conn);
 		return listVideoGames;
 	}
 	public List<VideoGame> orderByReleaseDate() {
@@ -163,8 +133,8 @@ public class VideoGameRepository {
 		}finally {
 			manager.close(resultSet);
 			manager.close(prepareStatement);
+			manager.close(conn);
 		}
-		manager.close(conn);
 		return listVideoGames;
 	}
 	public void delete(VideoGame videoGameForm) {

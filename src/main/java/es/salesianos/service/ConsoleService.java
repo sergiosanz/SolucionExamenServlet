@@ -16,17 +16,12 @@ public class ConsoleService {
 		return ConsoleAssembler.createConsoleFromRequest(req);
 	}
 	public void createNewConsoleFromRequest(Console consoleForm) {
-		Console consoleInDatabase = repository.search(consoleForm);
-		if (consoleInDatabase == null) {
 			repository.insertConsole(consoleForm);
-		} else {
-			repository.update(consoleForm);
-		}
-	}
+	}			
 	public List<Console> listAllByCompany(int idCompany){
 		return repository.selectByCompany(idCompany);
 	}
-	public List<Console> listAllConsoles() {
+	public List<Console> listAllConsole() {
 		return repository.searchAll();
 	}
 	public void deleteConsole(Console console){

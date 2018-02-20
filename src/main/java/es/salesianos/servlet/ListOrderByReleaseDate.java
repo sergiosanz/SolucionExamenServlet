@@ -17,8 +17,8 @@ public class ListOrderByReleaseDate extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<VideoGame> listAllVideoGames = service.OrderByReleaseDate();
-		req.getSession().setAttribute("listAllVideoGames", listAllVideoGames);
+		List<VideoGame> listAllVideoGame = service.OrderByReleaseDate();
+		req.getSession().setAttribute("listAllVideoGame", listAllVideoGame);
 		redirect(req,resp);
 	}
 	

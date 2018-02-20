@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Formulario de datos</title>
+<title>Form of dates</title>
 </head>
 <body>
 <form action="addVideogame" method="post">

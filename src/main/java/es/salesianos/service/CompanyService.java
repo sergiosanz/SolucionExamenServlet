@@ -16,15 +16,10 @@ public class CompanyService {
 	public Company assembleUserFromRequest(HttpServletRequest req) {
 		return CompanyAssembler.createCompanyFromRequest(req);
 	}
-	public void createNewCompanyFromRequest(Company CompanyForm) {
-		Company CompanyInDatabase = repository.search(CompanyForm);
-		if (CompanyInDatabase== null) {
-			repository.insertCompany(CompanyForm);
-		} else {
-			repository.update(CompanyForm);
-		}
+	public void createNewCompanyFromRequest(Company companyForm) {
+			repository.insertCompany(companyForm);
 	}
-	public List<Company> listAllCompanies() {
+	public List<Company> listAllCompany() {
 		return repository.searchAll();
 	}
 	public CompanyRepository getRepository() {

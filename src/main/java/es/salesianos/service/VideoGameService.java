@@ -18,17 +18,12 @@ public class VideoGameService {
 		return VideoGameAssembler.createVideoGameFromRequest(req);
 	}
 	public void createNewVideoGameFromRequest(VideoGame VideoGameForm) {
-		VideoGame videogameInDatabase = repository.search(VideoGameForm);
-		if (videogameInDatabase== null) {
 			repository.insertVideoGame(VideoGameForm);
-		} else {
-			repository.update(VideoGameForm);
-		}
 	}
 	public List<VideoGame> listAllByCompany(int idCompany){
 		return repository.selectByCompany(idCompany);
 	}
-	public List<VideoGame> listAllVideogames() {
+	public List<VideoGame> listAllVideogame() {
 		return repository.searchAll();
 	}
 	public List<VideoGame> OrderByTitle() {

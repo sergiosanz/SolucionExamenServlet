@@ -14,31 +14,6 @@ public class ConsoleRepository {
 	private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test;INIT=RUNSCRIPT FROM 'classpath:scripts/create.sql'";
 	ConnectionManager manager = new H2Connection();
 
-	public Console search(Console ConsoleForm) {
-		Console consoleInDatabase= null;
-		ResultSet resultSet = null;
-		PreparedStatement prepareStatement = null;
-		Connection conn = manager.open(jdbcUrl);
-		try {
-			prepareStatement = conn.prepareStatement("SELECT * FROM CONSOLE WHERE name = ?");
-			prepareStatement.setString(1, ConsoleForm.getName());
-			resultSet = prepareStatement.executeQuery();
-			while(resultSet.next()){
-				consoleInDatabase = new Console();
-				consoleInDatabase.setName(resultSet.getString(1));
-				consoleInDatabase.setCompanyId(resultSet.getInt(2));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}finally {
-			manager.close(resultSet);
-			manager.close(prepareStatement);
-			
-		}
-		manager.close(conn);
-		return consoleInDatabase;
-	}
 	public void insertConsole(Console consoleForm) {
 		Connection conn = manager.open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
@@ -52,12 +27,8 @@ public class ConsoleRepository {
 			throw new RuntimeException(e);
 		} finally {
 			manager.close(preparedStatement);
+			manager.close(conn);
 		}
-		manager.close(conn);
-	}
-	public void update(Console consoleForm) {
-		Connection conn = manager.open(jdbcUrl);
-		manager.close(conn);
 	}
 	public List<Console> searchAll() {
 		List<Console> listConsoles= new ArrayList<Console>();
@@ -79,8 +50,8 @@ public class ConsoleRepository {
 		}finally {
 			manager.close(resultSet);
 			manager.close(prepareStatement);
+			manager.close(conn);
 		}
-		manager.close(conn);
 		return listConsoles;
 	}
 	public List<Console> selectByCompany(int id) {
@@ -104,8 +75,8 @@ public class ConsoleRepository {
 		}finally {
 			manager.close(resultSet);
 			manager.close(prepareStatement);
+			manager.close(conn);
 		}
-		manager.close(conn);
 		return listConsoles;
 	}
 	public void delete(Console console) {
