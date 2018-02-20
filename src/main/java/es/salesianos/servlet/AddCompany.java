@@ -16,8 +16,8 @@ public class AddCompany extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Company Companys = service.assembleUserFromRequest(req);
-		service.createNewCompanyFromRequest(Companys);
+		Company company = service.assembleUserFromRequest(req);
+		service.createNewCompanyFromRequest(company);
 		redirect(req,resp);
 	}
 	protected void redirect(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
