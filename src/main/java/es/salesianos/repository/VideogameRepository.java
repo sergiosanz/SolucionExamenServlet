@@ -152,6 +152,7 @@ public class VideoGameRepository {
 			preparedStatement.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		} finally {
 			manager.close(preparedStatement);
 			manager.close(conn);
