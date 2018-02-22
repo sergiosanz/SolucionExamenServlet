@@ -8,6 +8,8 @@ public class VideoGame {
 	private Date releaseDate;
 	private int companyId;
 	
+	
+
 	public String getName() {
 		return name;
 	}

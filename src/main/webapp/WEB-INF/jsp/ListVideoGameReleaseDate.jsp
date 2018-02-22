@@ -10,21 +10,13 @@
 <title>Show list of videogames</title>
 </head>
 <body>
-<form action="listVideoGame" method="post">
-	<input type="submit" value="show list">
-</form>
-<form action="OrderByTitle" method="post">
-	<input type="submit" value="order list by title" >
-</form>
-<form action="OrderByReleaseDate" method="post">
-	<input type="submit" value="order list by release date" >
-</form>
 <table border="1">
 	<thead>
 		<tr>
 			<td>Name</td>
 			<td>Age</td>
 			<td>Release Date</td>
+			<td>Company</td>
 		</tr>
 	</thead>
 	<tbody>

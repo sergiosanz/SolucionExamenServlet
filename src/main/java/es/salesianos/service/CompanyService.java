@@ -1,26 +1,30 @@
 package es.salesianos.service;
 
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import es.salesianos.assembler.CompanyAssembler;
-import es.salesianos.connection.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import es.salesianos.model.Company;
 import es.salesianos.repository.*;
 
-public class CompanyService {
-	CompanyAssembler assembler = new CompanyAssembler();
-	ConnectionManager manager = new H2Connection();
-	private CompanyRepository repository = new CompanyRepository();
-	
-	public Company assembleUserFromRequest(HttpServletRequest req) {
-		return CompanyAssembler.createCompanyFromRequest(req);
+@Service
+public class CompanyService implements es.salesianos.service.Service<Company>{
+
+	private static Logger log = LogManager.getLogger(CompanyService.class);
+	@Autowired
+	private CompanyRepository repository;
+	@Override
+	public void insert(Company companyForm) {
+		repository.insertCompany(companyForm);
 	}
-	public void createNewCompanyFromRequest(Company companyForm) {
-			repository.insertCompany(companyForm);
-	}
-	public List<Company> listAllCompany() {
+	@Override
+	public List<Company> listAll() {
 		return repository.searchAll();
+	}
+	@Override
+	public void delete(String companyForm) {
+		repository.delete(companyForm);		
 	}
 	public CompanyRepository getRepository() {
 		return repository;
@@ -28,4 +32,5 @@ public class CompanyService {
 	public void setRepository(CompanyRepository repository) {
 		this.repository = repository;
 	}
+	
 }

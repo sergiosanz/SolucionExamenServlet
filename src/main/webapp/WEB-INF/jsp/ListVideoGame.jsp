@@ -7,25 +7,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Show list of consoles</title>
+<title>Show list of videogames</title>
 </head>
 <body>
-<form action="listConsole" method="post">
-	<input type="submit" value="show list">
-</form>
 <table border="1">
 	<thead>
 		<tr>
 			<td>Name</td>
+			<td>Age</td>
+			<td>Release Date</td>
 			<td>Company</td>
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach var="console" items="${listAllConsole}">
+		<c:forEach var="videogame" items="${listAllVideoGame}">
 			<tr>
-				<td><c:out value="${console.name}"/> </td>
-				<td><c:out value="${console.companyId}"/> </td>
-				<td><a href="/delete?name=${console.name}">Delete</a></td>
+				<td><c:out value="${videogame.name}"/> </td>
+				<td><c:out value="${videogame.age}"/> </td>
+				<td><c:out value="${videogame.releaseDate}"/> </td>
+				<td><c:out value="${videogame.companyId}"/> </td>
+				<td><a href="/deleteVG?name=${videogame.name}">Delete</a></td>
+				
 	    	</tr>
 		</c:forEach>
 	</tbody>

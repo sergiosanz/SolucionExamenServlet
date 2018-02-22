@@ -8,7 +8,7 @@
 <title>Form of videogames</title>
 </head>
 <body>
-<form action="addVideogame" method="post">
+<form action="addVideoGame" method="post">
 		<span>Name:</span> 
 		<input type="text" name="name"> <br/>
 		<span>Recomended Age:</span> 
