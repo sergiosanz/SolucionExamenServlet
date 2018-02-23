@@ -6,28 +6,23 @@ public class Company {
 	private int id;
 	private String name;
 	private Date creationDate;
-
+	
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public Date getCreationDate() {
 		return creationDate;
 	}
-
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-
-	public int getId() {
+	public int getID() {
 		return id;
 	}
-
-	public void setId(int id) {
+	public void setID(int id) {
 		this.id = id;
 	}
 }

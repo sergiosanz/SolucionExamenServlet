@@ -1,35 +1,37 @@
 package es.salesianos.service;
 
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import es.salesianos.assembler.ConsoleAssembler;
-import es.salesianos.connection.*;
-import es.salesianos.model.Console;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import es.salesianos.model.*;
 import es.salesianos.repository.*;
 
-public class ConsoleService {
-	ConsoleAssembler assembler = new ConsoleAssembler();
-	ConnectionManager manager = new H2Connection();
-	private ConsoleRepository repository = new ConsoleRepository();
+@Service
+public class ConsoleService implements es.salesianos.service.Service<Console> {
 
-	public Console assembleUserFromRequest(HttpServletRequest req) {
-		return ConsoleAssembler.createConsoleFromRequest(req);
+	private static Logger log = LogManager.getLogger(ConsoleService.class);
+	@Autowired
+	private ConsoleRepository repository;
+
+	@Override
+	public void insert(Console consoleForm) {
+		repository.insertConsole(consoleForm);
 	}
 
-	public void createNewConsoleFromRequest(Console consoleForm) {
-		repository.insertConsole(consoleForm);
+	@Override
+	public List<Console> listAll() {
+		return repository.searchAll();
+	}
+
+	@Override
+	public void delete(String console) {
+		repository.delete(console);
 	}
 
 	public List<Console> listAllByCompany(int idCompany) {
 		return repository.selectByCompany(idCompany);
-	}
-
-	public List<Console> listAllConsole() {
-		return repository.searchAll();
-	}
-
-	public void deleteConsole(Console console) {
-		repository.delete(console);
 	}
 
 	public ConsoleRepository getRepository() {

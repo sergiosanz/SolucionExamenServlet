@@ -1,60 +1,65 @@
 package es.salesianos.repository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Component;
 
-import es.salesianos.connection.*;
-import es.salesianos.connection.ConnectionManager;
 import es.salesianos.model.Company;
 
+@Component
 public class CompanyRepository {
-	private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test;INIT=RUNSCRIPT FROM 'classpath:scripts/create.sql'";
-	ConnectionManager manager = new H2Connection();
+
+	private static Logger log = LogManager.getLogger(CompanyRepository.class);
+
+	@Autowired
+	private JdbcTemplate template;
+
+	@Autowired
+	private NamedParameterJdbcTemplate namedJdbcTemplate;
 
 	public void insertCompany(Company companyForm) {
-		Connection conn = manager.open(jdbcUrl);
-		PreparedStatement preparedStatement = null;
-		try {
-			preparedStatement = conn.prepareStatement("INSERT INTO COMPANY (name, creationDate)" + "VALUES (?, ?)");
-			preparedStatement.setString(1, companyForm.getName());
-			preparedStatement.setDate(2, companyForm.getCreationDate());
-			preparedStatement.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		} finally {
-			manager.close(preparedStatement);
-			manager.close(conn);
-		}
+		log.debug("log is running ok");
+		String sql = "INSERT INTO COMPANY (name, creationDate)" + "VALUES ( :name, :creationDate)";
+		MapSqlParameterSource param = new MapSqlParameterSource();
+		param.addValue("name", companyForm.getName());
+		param.addValue("creationDate", companyForm.getCreationDate());
+		namedJdbcTemplate.update(sql, param);
 	}
 
 	public List<Company> searchAll() {
-		List<Company> listCompany = new ArrayList<Company>();
-		Connection conn = manager.open(jdbcUrl);
-		ResultSet resultSet = null;
-		PreparedStatement prepareStatement = null;
-		try {
-			prepareStatement = conn.prepareStatement("SELECT * FROM Company");
-			resultSet = prepareStatement.executeQuery();
-			while (resultSet.next()) {
-				Company companyOnDatabase = new Company();
-				companyOnDatabase.setId(resultSet.getInt(1));
-				companyOnDatabase.setName(resultSet.getString(2));
-				companyOnDatabase.setCreationDate((resultSet.getDate(3)));
-				listCompany.add(companyOnDatabase);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		} finally {
-			manager.close(resultSet);
-			manager.close(prepareStatement);
-			manager.close(conn);
-		}
+		String sql = "SELECT * FROM COMPANY";
+		List<Company> listCompany = template.query(sql, new BeanPropertyRowMapper(Company.class));
 		return listCompany;
+	}
+
+	public void delete(String company) {
+		log.debug("tablename: company");
+		MapSqlParameterSource param = new MapSqlParameterSource();
+		param.addValue("name", company);
+		String sql = "DELETE FROM COMPANY WHERE name = '?'";
+		namedJdbcTemplate.update(sql, param);
+		log.debug(sql);
+	}
+
+	public JdbcTemplate getTemplate() {
+		return template;
+	}
+
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
+	}
+
+	public NamedParameterJdbcTemplate getNamedJdbcTemplate() {
+		return namedJdbcTemplate;
+	}
+
+	public void setNamedJdbcTemplate(NamedParameterJdbcTemplate namedJdbcTemplate) {
+		this.namedJdbcTemplate = namedJdbcTemplate;
 	}
 }

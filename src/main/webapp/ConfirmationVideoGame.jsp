@@ -12,12 +12,12 @@
 <title>Confirmation delete</title>
 </head>
 <body>
-    <h3>¿Are you sure of delete this element?</h3>
-    <br/>
+    ¿Are you sure of delete this element?
+    
 	<form action="deleteVG" method="post">
 		<input type="text" name="name" value="${name}">
-		<br/>
 		<input type="submit" value="Si">
 	</form>
+
 </body>
 </html>
