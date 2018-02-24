@@ -42,8 +42,7 @@ public class ConsoleRepository {
 
 	public List<Console> selectByCompany(int id) {
 		List<Console> listConsole = new ArrayList<Console>();
-		List<Map<String, Object>> rows = namedJdbcTemplate.queryForList("SELECT * FROM Console WHERE companyId = ?",
-				new MapSqlParameterSource("companyId", String.valueOf(id)));
+		List<Map<String, Object>> rows = namedJdbcTemplate.queryForList("SELECT * FROM Console WHERE companyId = ?", new MapSqlParameterSource("companyId", String.valueOf(id)));
 		for (Map row : rows) {
 			Console console = new Console();
 			console.setName((String) (row.get("name")));

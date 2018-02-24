@@ -34,5 +34,4 @@ public class AddVideoGame extends HttpServlet {
 	public void setService(VideoGameService service) {
 		this.service = service;
 	}
-
 }

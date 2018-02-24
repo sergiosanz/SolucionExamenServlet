@@ -92,5 +92,4 @@ public class VideoGameRepository {
 		namedJdbcTemplate.update(sql, param);
 		log.debug(sql);
 	}
-
 }
