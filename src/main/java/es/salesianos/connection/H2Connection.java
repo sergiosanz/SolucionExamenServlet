@@ -15,8 +15,7 @@ public class H2Connection implements ConnectionManager {
 			Class.forName("org.h2.Driver");
 			conn = DriverManager.getConnection(jdbcUrl + ";INIT=RUNSCRIPT FROM 'classpath:scripts/create.sql'", "sa", "");
 		} catch (Exception e) {
-			e.printStackTrace();
-			log.error(e);
+			log.error("error", e);
 		}
 		return conn;
 	}
@@ -27,8 +26,7 @@ public class H2Connection implements ConnectionManager {
 			prepareStatement = conn.prepareStatement(sql);
 			prepareStatement.execute(sql);
 		} catch (SQLException e) {
-			e.printStackTrace();
-			log.error(e);
+			log.error("error", e);
 		}
 		return conn;
 	}
@@ -37,8 +35,7 @@ public class H2Connection implements ConnectionManager {
 		try {
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
-			log.error(e);
+			log.error("error", e);
 		}
 	}
 
@@ -46,8 +43,7 @@ public class H2Connection implements ConnectionManager {
 		try {
 			prepareStatement.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
-			log.error(e);
+			log.error("error", e);
 		}
 	}
 
@@ -55,9 +51,7 @@ public class H2Connection implements ConnectionManager {
 		try {
 			resultSet.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
-			log.error(e);
+			log.error("error", e);
 		}
 	}
-
 }
