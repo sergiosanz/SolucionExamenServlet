@@ -36,15 +36,16 @@ public class CompanyController {
 
 	@GetMapping("/addCompany")
 	public ModelAndView loadCompany() {
-		log.debug("loading company");
-		return new ModelAndView("AddCompany", "command", new Company());
+		ModelAndView modelAndView = new ModelAndView("AddCompany", "command", new Company());
+		return modelAndView
 	}
 
 	@PostMapping("/addCompany")
 	public ModelAndView create(@ModelAttribute("company") Company company) {
 		log.debug("inserting company");
 		service.insert(company);
-		return new ModelAndView("AddCompany", "command", new Company());
+		ModelAndView modelAndView = new ModelAndView("AddCompany", "command", new Company());
+		return modelAndView
 	}
 
 }
