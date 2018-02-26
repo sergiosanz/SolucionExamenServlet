@@ -26,7 +26,6 @@ public class ConsoleRepository {
 	private NamedParameterJdbcTemplate namedJdbcTemplate;
 
 	public void insertConsole(Console consoleForm) {
-		log.debug("log is running ok");
 		String sql = "INSERT INTO Console (name, companyId)" + " VALUES ( :name, :companyId)";
 		MapSqlParameterSource param = new MapSqlParameterSource();
 		param.addValue("name", consoleForm.getName());
