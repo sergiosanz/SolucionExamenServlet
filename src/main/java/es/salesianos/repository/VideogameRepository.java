@@ -26,7 +26,6 @@ public class VideoGameRepository {
 	private NamedParameterJdbcTemplate namedJdbcTemplate;
 
 	public void insertVideoGame(VideoGame videoGameForm) {
-		log.debug("log is running ok");
 		String sql = "INSERT INTO VIDEOGAME (name, age, releaseDate, companyId)" + "VALUES ( :name, :age, :releaseDate, :companyId)";
 		MapSqlParameterSource param = new MapSqlParameterSource();
 		param.addValue("name", videoGameForm.getName());
