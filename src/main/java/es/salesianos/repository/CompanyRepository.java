@@ -24,7 +24,6 @@ public class CompanyRepository {
 	private NamedParameterJdbcTemplate namedJdbcTemplate;
 
 	public void insertCompany(Company companyForm) {
-		log.debug("log is running ok");
 		String sql = "INSERT INTO COMPANY (name, creationDate)" + "VALUES ( :name, :creationDate)";
 		MapSqlParameterSource param = new MapSqlParameterSource();
 		param.addValue("name", companyForm.getName());
