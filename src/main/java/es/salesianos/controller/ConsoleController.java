@@ -21,15 +21,16 @@ public class ConsoleController {
 
 	@GetMapping("/addConsole")
 	public ModelAndView load() {
-		log.debug("loading console");
-		return new ModelAndView("AddConsole", "command", new Console());
+		ModelAndView modelAndView = new ModelAndView("AddConsole", "command", new Console());
+		return modelAndView;
 	}
 
 	@PostMapping("/addConsole")
 	public ModelAndView insertConsole(@ModelAttribute("console") Console console) {
 		log.debug("inserting console");
 		service.insert(console);
-		return new ModelAndView("AddConsole", "command", new Console());
+		ModelAndView modelAndView = new ModelAndView("AddConsole", "command", new Console());
+		return modelAndView;
 	}
 
 	@GetMapping("/listConsole")
