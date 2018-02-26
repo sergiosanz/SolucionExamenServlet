@@ -20,8 +20,8 @@ public class ConsoleController {
 	private ConsoleService service;
 
 	@GetMapping("/addConsole")
-	public ModelAndView create() {
-		log.debug("inserting console");
+	public ModelAndView load() {
+		log.debug("loading console");
 		return new ModelAndView("AddConsole", "command", new Console());
 	}
 

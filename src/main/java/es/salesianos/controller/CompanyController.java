@@ -35,8 +35,8 @@ public class CompanyController {
 	}
 
 	@GetMapping("/addCompany")
-	public ModelAndView insertCompany() {
-		log.debug("inserting company");
+	public ModelAndView loadCompany() {
+		log.debug("loading company");
 		return new ModelAndView("AddCompany", "command", new Company());
 	}
 
